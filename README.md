@@ -33,3 +33,14 @@ cd .\backend
 
 - SQLite database at `backend/db.sqlite3`.
 - JWT authentication required for protected endpoints.
+
+## Deploy on Render
+
+This repo includes `render.yaml` and `build.sh` for a one-click Render deploy.
+
+1. Push to GitHub.
+2. Create a new Render Blueprint from the repo.
+3. Render will run `./build.sh` and start the web service.
+
+SQLite is configured via `SQLITE_PATH` and a persistent disk in `render.yaml`.
+If you prefer Render Postgres, set `DATABASE_URL` and remove the `disk`/`SQLITE_PATH` entries.
