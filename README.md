@@ -40,7 +40,11 @@ This repo includes `render.yaml` and `build.sh` for a one-click Render deploy.
 
 1. Push to GitHub.
 2. Create a new Render Blueprint from the repo.
-3. Render will run `./build.sh` and start the web service.
+3. Render will run `bash build.sh` and start the web service.
+
+For the "New Web Service" flow, set:
+- Build command: `bash build.sh`
+- Start command: `python -m gunicorn approval_system.asgi:application -k uvicorn.workers.UvicornWorker --chdir backend`
 
 SQLite is configured via `SQLITE_PATH` and a persistent disk in `render.yaml`.
 If you prefer Render Postgres, set `DATABASE_URL` and remove the `disk`/`SQLITE_PATH` entries.

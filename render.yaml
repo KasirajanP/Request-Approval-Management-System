@@ -2,7 +2,7 @@ services:
   - type: web
     name: request-approval-api
     env: python
-    buildCommand: ./build.sh
+    buildCommand: bash build.sh
     startCommand: python -m gunicorn approval_system.asgi:application -k uvicorn.workers.UvicornWorker --chdir backend
     envVars:
       - key: SECRET_KEY
