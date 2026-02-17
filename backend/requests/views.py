@@ -22,6 +22,13 @@ class RegisterView(generics.CreateAPIView):
     permission_classes = [AllowAny]
 
 
+class HealthCheckView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        return Response({'status': 'ok'}, status=status.HTTP_200_OK)
+
+
 class CreateRequestView(generics.CreateAPIView):
     serializer_class = RequestCreateSerializer
 

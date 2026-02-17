@@ -37,6 +37,11 @@ class RequestApprovalAPITests(TestCase):
         access = response.json()['access']
         self.client.defaults['HTTP_AUTHORIZATION'] = f'Bearer {access}'
 
+    def test_health_check_is_public(self):
+        response = self.client.get('/api/health/')
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+        self.assertEqual(response.json(), {'status': 'ok'})
+
     def test_register_user(self):
         payload = {
             'username': 'employee2',
